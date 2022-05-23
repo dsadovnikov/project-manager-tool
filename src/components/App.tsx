@@ -10,6 +10,7 @@ function App() {
   );
 
   useEffect(() => {
+    console.log("Обращение к серверу");
     dispatch(fetchBoard());
   }, []);
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { boardSlice } from '../../slices/board';
 import { IColumn } from '../../types/column';

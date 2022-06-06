@@ -13,10 +13,12 @@ interface BoardProps {
 }
 
 const Board = (props: BoardProps): JSX.Element => {
-  const { addColumn } = boardSlice.actions;
+  const { addColumn, reorderCards } = boardSlice.actions;
   const dispatch = useDispatch();
 
-  const onDragEnd = (result: DropResult): void => {};
+  const onDragEnd = (result: DropResult): void => {
+    dispatch(reorderCards(result));
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

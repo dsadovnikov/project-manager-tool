@@ -3,6 +3,8 @@ import { BoardSlice, IBoard } from '../types/board';
 import { ICard } from '../types/card';
 import { IColumn } from '../types/column';
 import { fetchBoardFromFakeServer } from '../api/fetchBoard';
+import { DropResult } from 'react-beautiful-dnd';
+import { reorderCards } from '../helpers/reorderCards';
 
 const initialState: BoardSlice = {
   board: {
@@ -53,6 +55,16 @@ export const boardSlice = createSlice({
             (item) => item.id !== action.payload.id
           ))
       );
+    },
+    reorderCards(state, action: PayloadAction<DropResult>) {
+      if (action.payload.destination) {
+        const columns = reorderCards(
+          state,
+          action.payload.source,
+          action.payload.destination
+        );
+        state.board.columns = columns;
+      }
     },
   },
   extraReducers: {

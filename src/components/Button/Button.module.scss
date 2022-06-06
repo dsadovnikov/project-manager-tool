@@ -1,0 +1,13 @@
+.btn {
+  padding: 7px;
+  background-color: rgb(39, 106, 160);
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: rgb(29, 72, 107);
+  }
+}

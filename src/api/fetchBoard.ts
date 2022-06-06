@@ -1,43 +1,43 @@
-import axios from "axios";
+import axios from 'axios';
 
 const payload = {
-  token: "tJE_iNBMWoclNTwMQdYl9w",
+  token: 'tJE_iNBMWoclNTwMQdYl9w',
   data: {
-    title: "Board",
+    title: 'Board',
     columns: [
       {
         id: 0,
-        title: "First column",
+        title: 'First column',
         cards: [
           {
             id: 0,
-            title: "First card",
+            title: 'First card',
             columnId: 0,
           },
           {
             id: 1,
-            title: "Second card",
+            title: 'Second card',
             columnId: 0,
           },
           {
             id: 2,
-            title: "Third card",
+            title: 'Third card',
             columnId: 0,
           },
         ],
       },
       {
         id: 1,
-        title: "First column",
+        title: 'First column',
         cards: [
           {
             id: 3,
-            title: "Fourth card",
+            title: 'Fourth card',
             columnId: 1,
           },
           {
             id: 4,
-            title: "Fifth card",
+            title: 'Fifth card',
             columnId: 1,
           },
         ],
@@ -47,7 +47,7 @@ const payload = {
 };
 
 export const fetchBoardFromFakeServer = axios({
-  method: "post",
-  url: "https://app.fakejson.com/q",
+  method: 'post',
+  url: 'https://app.fakejson.com/q',
   data: payload,
 });

@@ -1,0 +1,23 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: baseline;
+  max-width: 250px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(94, 94, 94, 0.5);
+  border-radius: 3px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: rgb(197, 199, 191);
+  &:focus {
+    outline: 1px solid rgba(168, 168, 168, 0.45);
+  }
+}

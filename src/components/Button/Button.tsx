@@ -1,12 +1,43 @@
-import React from "react";
+import React from 'react';
+import styles from './Button.module.scss';
 
-interface ButtonProps {
-  title: string;
-  onClick: () => void;
+export enum ButtonType {
+  button = 'button',
+  reset = 'reset',
+  submit = 'submit',
 }
 
-const Button = (props: ButtonProps): JSX.Element => {
-  return <div onClick={props.onClick}>{props.title}</div>;
+export enum ButtonTheme {
+  positive = 'positive',
+  negative = 'negative',
+  neutral = 'neutral',
+}
+
+interface ButtonProps {
+  type: ButtonType;
+  theme: ButtonTheme;
+  onClick: () => any;
+  disabled?: boolean;
+  children?: React.ReactNode;
+}
+
+const Button = ({
+  type,
+  theme,
+  onClick,
+  disabled,
+  children,
+}: ButtonProps): JSX.Element => {
+  return (
+    <button
+      className={styles.btn}
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;

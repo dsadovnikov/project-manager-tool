@@ -1,0 +1,17 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  padding: 30px;
+}
+
+.columns {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.header {
+  color: rgb(197, 199, 191);
+}

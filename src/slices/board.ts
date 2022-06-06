@@ -1,20 +1,20 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BoardSlice, IBoard } from "../types/board";
-import { ICard } from "../types/card";
-import { IColumn } from "../types/column";
-import { fetchBoardFromFakeServer } from "../utils/fetchBoard";
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { BoardSlice, IBoard } from '../types/board';
+import { ICard } from '../types/card';
+import { IColumn } from '../types/column';
+import { fetchBoardFromFakeServer } from '../api/fetchBoard';
 
 const initialState: BoardSlice = {
   board: {
-    title: "",
+    title: '',
     columns: [],
   },
   isLoading: false,
-  error: "",
+  error: '',
 };
 
 export const fetchBoard = createAsyncThunk(
-  "board/fetchAll",
+  'board/fetchAll',
   async (_, thunkAPI) => {
     try {
       const response = await fetchBoardFromFakeServer;
@@ -26,7 +26,7 @@ export const fetchBoard = createAsyncThunk(
 );
 
 export const boardSlice = createSlice({
-  name: "board",
+  name: 'board',
   initialState,
   reducers: {
     addColumn(state, action: PayloadAction<IColumn>) {
@@ -38,15 +38,21 @@ export const boardSlice = createSlice({
       );
     },
     addCard(state, action: PayloadAction<ICard>) {
-      state.board.columns[parseInt(action.payload.columnId)].cards.push(
-        action.payload
+      const column = state.board.columns.find(
+        (item) => item.id === action.payload.columnId
       );
+      column?.cards.push(action.payload);
     },
     removeCard(state, action: PayloadAction<ICard>) {
-      state.board.columns[parseInt(action.payload.columnId)].cards =
-        state.board.columns[parseInt(action.payload.columnId)].cards.filter(
-          (item) => item.id !== action.payload.id
-        );
+      const column = state.board.columns.filter(
+        (item) => item.id === action.payload.columnId
+      );
+      column.forEach(
+        (item) =>
+          (item.cards = item.cards.filter(
+            (item) => item.id !== action.payload.id
+          ))
+      );
     },
   },
   extraReducers: {
@@ -55,7 +61,7 @@ export const boardSlice = createSlice({
     },
     [fetchBoard.fulfilled.type]: (state, action: PayloadAction<IBoard>) => {
       state.isLoading = false;
-      state.error = "";
+      state.error = '';
       state.board = action.payload;
     },
     [fetchBoard.rejected.type]: (state, action: PayloadAction<string>) => {

@@ -1,26 +1,28 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../hooks";
-import { boardSlice } from "../../slices/board";
-import { ICard } from "../../types/card";
-import Button from "../Button/Button";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { boardSlice } from '../../slices/board';
+import { ICard } from '../../types/card';
+import Button, { ButtonTheme, ButtonType } from '../Button/Button';
+import styles from './Card.module.scss';
 
 interface CardProps {
   card: ICard;
 }
 
 const Card = (props: CardProps): JSX.Element => {
-  const { board } = useAppSelector((state) => state.boardSlice);
   const { removeCard } = boardSlice.actions;
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className={styles.card}>
       {props.card.title}
       <Button
+        type={ButtonType.button}
+        theme={ButtonTheme.neutral}
         onClick={() => dispatch(removeCard(props.card))}
-        title="Remove card"
-      />
+      >
+        X
+      </Button>
     </div>
   );
 };

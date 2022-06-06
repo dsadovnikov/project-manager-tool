@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { nanoid } from 'nanoid';
 
 const payload = {
   token: 'tJE_iNBMWoclNTwMQdYl9w',
@@ -6,39 +7,44 @@ const payload = {
     title: 'Board',
     columns: [
       {
-        id: 0,
+        id: nanoid(),
         title: 'First column',
         cards: [
           {
-            id: 0,
+            id: '0',
+            index: 0,
             title: 'First card',
-            columnId: 0,
+            columnId: '0',
           },
           {
-            id: 1,
+            id: '1',
+            index: 1,
             title: 'Second card',
-            columnId: 0,
+            columnId: '0',
           },
           {
-            id: 2,
+            id: '2',
+            index: 2,
             title: 'Third card',
-            columnId: 0,
+            columnId: '0',
           },
         ],
       },
       {
-        id: 1,
+        id: nanoid(),
         title: 'First column',
         cards: [
           {
-            id: 3,
+            id: '3',
+            index: 0,
             title: 'Fourth card',
-            columnId: 1,
+            columnId: '1',
           },
           {
-            id: 4,
+            id: '4',
+            index: 1,
             title: 'Fifth card',
-            columnId: 1,
+            columnId: '1',
           },
         ],
       },

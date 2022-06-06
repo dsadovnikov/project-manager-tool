@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { boardSlice } from '../../slices/board';
 import { IColumn } from '../../types/column';
-import AddCardForm from '../AppCardForm/AddCardForm';
+import AddCardForm from '../AddCardForm/AddCardForm';
 import Button, { ButtonTheme, ButtonType } from '../Button/Button';
 import CardList from '../CardList/CardList';
 import styles from './Column.module.scss';
@@ -33,9 +34,9 @@ const Column = (props: ColumnProps): JSX.Element => {
           X
         </Button>
       </div>
-      <CardList cards={props.column.cards} />
+      <CardList cards={props.column.cards} columnId={props.column.id} />
       {showForm ? (
-        <AddCardForm columnId={props.column.id} switchForm={switchShowForm} />
+        <AddCardForm column={props.column} switchForm={switchShowForm} />
       ) : (
         <Button
           type={ButtonType.button}

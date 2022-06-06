@@ -2,15 +2,16 @@ import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { boardSlice } from '../../slices/board';
+import { IColumn } from '../../types/column';
 import Button, { ButtonTheme, ButtonType } from '../Button/Button';
 import styles from './AddCardForm.module.scss';
 
 interface AddCardFormProps {
-  columnId: string;
+  column: IColumn;
   switchForm: () => void;
 }
 
-const AddCardForm = ({ columnId, switchForm }: AddCardFormProps) => {
+const AddCardForm = ({ column, switchForm }: AddCardFormProps) => {
   const [cardText, setCardText] = useState<string>('');
 
   const { addCard } = boardSlice.actions;
@@ -21,7 +22,7 @@ const AddCardForm = ({ columnId, switchForm }: AddCardFormProps) => {
       addCard({
         id: nanoid(),
         title: cardText,
-        columnId: columnId,
+        columnId: column.id,
       })
     );
     setCardText('');

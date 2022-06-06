@@ -1,10 +1,10 @@
-# Book Search App
+# Project Manager Tool
 
 Приложение для управления задачами, копия Trello. Реализован запрос задач с сервера, добавление, удаление и перетаскивание отдельных задач и списков.
 
 ## Запуск
 
-[Нажмите здесь, чтобы увидеть демо](https://dsadovnikov.github.io/task-manager/)
+[Нажмите здесь, чтобы увидеть демо](https://dsadovnikov.github.io/project-manager-tool/)
 
 ## Локальный запуск
 

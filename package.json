@@ -1,5 +1,6 @@
 {
   "name": "project-manager-tool",
+  "homepage": "https://dsadovnikov.github.io/project-manager-tool/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "axios": "^0.27.2",
+    "gh-pages": "^4.0.0",
     "nanoid": "^3.3.4",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
@@ -25,6 +27,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
